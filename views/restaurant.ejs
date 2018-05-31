@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="javascripts/restaurant-ajax.js"></script>
+
+    <script>socketInit();</script>
+
+    <title><%= restaurant.name %></title>
+
+</head>
+
+<body>
+
+    <% include header.ejs %>
+
+    <h1><%= restaurant.name %></h1>
+
+    <p>Address: <%= restaurant.address %></p>
+    <p>Lat: <%= restaurant.lat %></p>
+    <!--<p>Lng: <%= restaurant.lng %></p> this is what the g maps uses-->
+    <p>Description: <%= restaurant.text %></p>
+    <p>Phone Number: <%= restaurant.phoneNumber %></p>
+    <p>Cuisine: <%= restaurant.cuisine %></p>
+    <p>Url: <%= restaurant.url %></p>
+
+    <h3>Add a Review</h3>
+    <!--do this with ajax!!!!-->
+    <form class="" id="review-form" onsubmit="ajaxFunction(event)"action="/restaurant" method="post">
+        Description: <input type="text" id="descrip" placeholder="Enter description" name="descrip" id="descrip">
+        <br>
+        Rating: <input type="text" id="rating" placeholder="Enter rating" name="rating" id="rating">
+        <br>
+        <input type="submit" class="" name="submit" value="Submit" id="submit">
+    </form>
+    <br>
+    <br>
+
+    <h2>Reviews: </h2>
+
+    <div id="reviews-area">
+
+    <% reviews.forEach(function(review){ %>
+
+        <div>
+            UserId: <%= review.userId %> <br>
+            Rating: <%= review.rating %> <br>
+            Text: <%= review.text %> <br>
+        </div>
+    </div>
+        <br>
+
+    <% }); %>
+
+
+
+</body>
+</html>

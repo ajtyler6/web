@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>Restaurant Assignment</title>
+
+</head>
+
+<body>
+<div>
+
+    <% include header.ejs %>
+
+    <form class="" id="restaurant-form" action="/new-restaurant" method="post">
+        Name: <input type="text" id="name" placeholder="Enter Name" name="name" id="name">
+        <br>
+        Postcode: <input type="text" id="postcode" placeholder="Enter postcode" name="postcode" id="postcode">
+        <br>
+        Door Number: <input type="text" id="doorno" placeholder="Enter postcode" name="doorno" id="doorno">
+        <br>
+        Number: <input type="text" id="phonenumber" placeholder="Enter Phone Number" name="phonenumber" id="phonenumber">
+        <br>
+        Description: <input type="text" id="descrip" placeholder="Enter description" name="descrip" id="descrip">
+        <br>
+        Website: <input type="text" id="url" placeholder="Enter website" name="url" id="url">
+        <br>
+        Cuisine: <input type="text" id="cuisine" placeholder="Enter cuisine" name="cuisine" id="cuisine">
+        <br>
+        <input type="submit" class="" name="submit" value="Submit" id="submit">
+    </form>
+
+</div>
+
+</div>
+
+</body>
+</html>
