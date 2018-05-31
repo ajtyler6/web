@@ -1,13 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-
-//TODO new signup through form
-
 const search = require('../controllers/search');
 const restaurant = require('../controllers/restaurant');
 const review = require('../controllers/review');
 const user = require('../controllers/user');
+const signin = require('../controllers/signin');
 
 // Shows the home page
 router.get('/', function(req, res, next) {
@@ -47,6 +45,16 @@ router.get('/sign-up', function(req, res, next) {
 // Handles the sign up
 router.post('/sign-up', function(req, res, next) {
     user.signUp(req, res);
+});
+
+// Shows the sign in page
+router.get('/sign-in', function(req, res, next)  {
+    res.render('signin', {log: ""});
+});
+
+// Handles the sign in
+router.post('/sign-in', function(req, res, next)  {
+    signin.signIn(req, res);
 });
 
 module.exports = router;
