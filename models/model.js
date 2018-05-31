@@ -1,3 +1,4 @@
+//mongod --config /usr/local/etc/mongod.conf
 const mongoose = require('mongoose');
 
 // Review Schema
