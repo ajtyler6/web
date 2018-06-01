@@ -1,0 +1,100 @@
+$main-colour: #616161
+$hover-colour: #757575
+$secondary-colour: #fff
+
+// Dropdown Tags
+.panel
+  background-color: $main-colour
+  box-shadow: none
+  margin-right: -21px
+  margin-bottom: 20px
+  margin-left: -20px
+
+.list-group-item
+  background-color: $main-colour
+  color: $secondary-colour
+  border: 0
+  padding-right: 20px
+  padding-left: 20px
+  font-size: 16px
+
+.list-group-item:hover
+  background-color: $hover-colour
+  a
+    background-color: $hover-colour
+
+//  Direct Link styling (to look like drop down buttons)
+.list-group-item li
+  list-style: none
+  a
+    background-color: $main-colour
+    color: $secondary-colour
+    text-decoration: none
+
+.list-group-item a:hover
+  background-color: $hover-colour
+
+//  Actual drop down styling
+.list-group
+  .collapseStyle
+    li
+      background-color: $secondary-colour
+      list-style: none
+      text-decoration: none
+      padding: 0.5em
+
+.list-group
+  .collapseStyle
+    li
+      a
+        background-color: $secondary-colour
+        color: $main-colour
+        text-decoration: none
+        font-size: 14px
+
+// Sidebar Tags
+.sidebar
+  position: fixed
+  bottom: 0px
+  top: 0
+  left: 0
+  z-index: 1000
+  display: block
+  padding: 20px
+  overflow-x: hidden
+  overflow-y: auto
+  background-color: $main-colour
+
+.selected
+  display: none
+
+.side-header
+  text-align: center
+  padding-bottom: 10px
+  font-size: 22px
+  color: $secondary-colour
+
+  li
+    list-style: none
+    a
+      color: $secondary-colour
+      text-decoration: none
+
+.side-sub-header
+  text-align: center
+  padding-bottom: 10px
+  font-size: 14px
+  color: $secondary-colour
+
+.side-footer
+  text-align: center
+  padding-bottom: 20px
+  font-size: 16px
+  color: $secondary-colour
+  position: absolute
+  bottom: 0
+
+// Main Holder
+.main
+  padding-right: 40px
+  padding-left: 40px

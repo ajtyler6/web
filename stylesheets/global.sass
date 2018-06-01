@@ -1,0 +1,66 @@
+.section-title
+  font-size: 26px
+  padding-top: 1em
+  padding-bottom: 1em
+
+.thin
+  width: 70%
+  margin-left: 15%
+  margin-right: 15%
+
+.thin1
+  margin-left: 25%
+  width: 100%
+
+.section-sub-title
+  font-size: 22px
+  padding-top: 1em
+  padding-bottom: 1em
+
+.content-title
+  font-weight: bold
+
+.row-padding
+  padding-bottom: 3em
+
+.print
+  display: none
+
+.panel.panel-default
+  background-color: white
+
+.linked-button
+  a
+    text-decoration: none
+    color: white
+  a:hover
+    color: white
+
+.centre
+  text-align: center
+
+.modal-body p
+  word-wrap: break-word
+
+.top-of-page
+  padding-top: 2em
+
+.alert
+  font-size: 150%
+  color: red
+
+@media print
+  .print
+    display: inherit
+    margin-left: -30%
+
+  .remove,.col-sm-3.col-md-2.sidebar,.panel-heading,hr
+    display: none
+
+  .thin
+    width: 100%
+    margin-right: 45%
+    margin-left: -35%
+
+  .table
+    page-break-after  : always

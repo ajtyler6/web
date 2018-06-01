@@ -1,29 +1,28 @@
 const models = require('../models/model');
+const passport = require("passport");
+var LocalStrategy = require('passport-local').Strategy;
+var user = 0;
+const passport_user = require('../controllers/passport');
 
-module.exports = {
-
-  signIn: function(req, res, next)  {
-    var u = req.body.u;
-    var p = req.body.p;
-    var log = "logged in";
-
-    models.User.findOne({username: new RegExp(u,"i")}, function (err, results)  {
-      if(err) {return console.error(err)};
-
-      console.log(results);
-      if(results !== null)  {
-        if (u === results.username.toLowerCase() && p === results.password)  {
-          req.session.token = results._id;
-          //res.redirect(req.session.prevURL);
-          res.render('signin', { signedIn: true, log: log, error: "signed in"});
+passport.use('signin', new LocalStrategy({
+    passReqToCallback : true
+  },
+  function(req, username, password, done) {
+    // check in mongo if a user with username exists or not
+    models.User.findOne({ 'username' :  username },
+      function(err, user) {
+        // In case of any error, return using the done method
+        if (err)
+          return done(err);
+        // Username does not exist, log error & redirect back
+        if (!user){
+          console.log('User Not Found with username '+username);
+          return done(null, false,
+                req.flash('message', 'User Not found.'));
         }
-        else  {
-          res.render('signin', { signedIn: false,  log: log, error: "Username and password are incorrect"});
-        }
+        // User and password both match, return user from
+        // done method which will be treated like success
+        return done(null, user);
       }
-      else  {
-        res.render('signin', { signedIn: false,  log: log, error: "Incorrect sign-in details"});
-      }
-    });
-  }
-}
+    );
+}));
