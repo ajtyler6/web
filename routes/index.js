@@ -1,15 +1,32 @@
+/*
+* Index controls were the system directs the user to.
+* @author Georgia Hardy & Andy Tyler
+* @version 1.0 (June 1, 2018)
+*/
+
+// require the express API
 const express = require('express');
+// declare the router variable
 var router = express.Router();
+// require the passport API
 const passport = require("passport");
+// require the express sessions API
 const session = require('express-session')
 const app = express()
+// require passport local which is module in passport
 var LocalStrategy = require('passport-local').Strategy;
 
+// require the search controller
 const search = require('../controllers/search');
+// require the restaurant controller
 const restaurant = require('../controllers/restaurant');
+// require the review controller
 const review = require('../controllers/review');
+// require the user controller
 const user = require('../controllers/user');
+// require the sign in controller
 const signin = require('../controllers/signin');
+// require the passport controller
 const passport_user = require('../controllers/passport');
 
 // Shows the home page
