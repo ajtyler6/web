@@ -7,6 +7,20 @@ The data can then be loaded with the rake db:seed (or created alongside the db w
    Mayor.create(name: 'Emanuel', city: cities.first)
 */
 
-Restaurant.create(userId: 'test', restaurantId: 'resttest', rating: 9, text: 'best restaurant');
-Review.create(name: 'testing', lat: 100, lng: 100, address: 'test address', text: 'this is a great restaurant', phoneNumber: '0114234234', cuisine: 'italian', score: 8, url: 'www.italianrestaurant');
-User.create(name: 'test1', username: 'testing1', password: 'this is a test');
+{
+    {
+        name: "restaurant 1",
+            lat: Number,
+        lng: Number,
+        address: "S3 7SH",
+        text: "String",
+        phoneNumber: "0948483478374",
+        cuisine: "chinese",
+        score: 0,
+        url: ""
+    }
+
+
+
+
+}

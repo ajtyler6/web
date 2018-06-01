@@ -11,9 +11,6 @@ const models = require('../models/model');
 const passport_user = require('../controllers/passport');
 // require passport API
 const passport = require("passport");
-// require passport-local which is a module of passport
-var LocalStrategy = require('passport-local').Strategy;
-const passport_user = require('../controllers/passport');
 
 
 passport.use('signin', new LocalStrategy({
