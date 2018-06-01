@@ -24,6 +24,7 @@ module.exports = {
         const desc = req.body.descrip;
         const url  = req.body.url;
         const type =req.body.cuisine;
+        const score =req.body.score;
 
         googleMapsClient.geocode({
             address: post
@@ -45,6 +46,7 @@ module.exports = {
                         text: desc,
                         phoneNumber: phno,
                         cuisine: type,
+                        score: score,
                         url: url
                     });
 

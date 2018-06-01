@@ -17,6 +17,7 @@ var schema2 = mongoose.Schema({
     text: String,
     phoneNumber: String,
     cuisine: String,
+    score: Number,
     url: String
 });
 

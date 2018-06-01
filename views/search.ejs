@@ -27,7 +27,8 @@
 
 <div id="map" style="width:600px;height:400px"></div>
 <script>
-    initMap();
+    initMap(<%=lat%>,  <%=lng%> );
+
 </script>
 
 
@@ -37,19 +38,14 @@
 
     You searched the area: <%=query%> of Latitude: <%=lat%> and Longitude <%=lng%>  <br>
 
+    <% var alpha = ["A", "B", "C"]; %>
+    <% var i =0; %>
     <% restaurants.forEach(function(restaurant){ %>
 
-    <!--use the restaurnat. lat .log and put the markers on
-    new js file and include it
-    put function in the %%% sign thing
-    div id = map
-
-    -->
-    <!-- function after it in %% that puts a gmap and does the markers -->
-    <script>displayGoogleMaps('<%= restaurant.name %>',<%= restaurant.lat %>,<%= restaurant.lng %>  );</script>
+    <script>displayGoogleMaps('<%= restaurant.name %>', <%= restaurant.lat %>, <%= restaurant.lng %>, '<%= restaurant.text %>', '<%= restaurant.cuisine %>', '<%= restaurant.phoneNumber %>', '<%= restaurant.url %>');</script>
 
     <div>
-        <h4><a href="/restaurant-<%= restaurant.name %>?token=<%= restaurant._id %>"> <%= restaurant.name %></a></h4>
+        <h4> <a href="/restaurant-<%= restaurant.name %>?token=<%= restaurant._id %>"> <%= alpha[i] + ": " + restaurant.name %></a></h4>
         Address: <%= restaurant.address %><br>
         Lat: <%= restaurant.lat %><br>
         Lng: <%= restaurant.lng %><br>
@@ -60,6 +56,8 @@
     </div>
 
     <br>
+    <% i++ %>
+
 
     <% }); %>
 

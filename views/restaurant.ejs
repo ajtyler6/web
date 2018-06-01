@@ -8,6 +8,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="javascripts/restaurant-ajax.js"></script>
+    <script src="javascripts/restaurant-maps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS-rdEkY_sqFv2AjbRIHIsnMon6JXbg1E"></script>
+
 
     <script>socketInit();</script>
 
@@ -17,47 +20,61 @@
 
 <body>
 
-    <% include header.ejs %>
+<% include header.ejs %>
 
-    <h1><%= restaurant.name %></h1>
+<div id="map" style="width:350px;height:300px"></div>
+<script>
+    initMap(<%=restaurant.lat%>, <%=restaurant.lng%>);
+</script>
+<script> displayGoogleMaps('<%= restaurant.name %>', <%= restaurant.lat %>, <%= restaurant.lng %>, '<%= restaurant.text %>', '<%= restaurant.cuisine %>', '<%= restaurant.phoneNumber %>', '<%= restaurant.url %>'); </script>
 
-    <p>Address: <%= restaurant.address %></p>
-    <p>Lat: <%= restaurant.lat %></p>
-    <!--<p>Lng: <%= restaurant.lng %></p> this is what the g maps uses-->
-    <p>Description: <%= restaurant.text %></p>
-    <p>Phone Number: <%= restaurant.phoneNumber %></p>
-    <p>Cuisine: <%= restaurant.cuisine %></p>
-    <p>Url: <%= restaurant.url %></p>
 
+<h1 class="float-right "><%= restaurant.name %></h1>
+
+<p>Address: <%= restaurant.address %></p>
+<p>Lat: <%= restaurant.lat %></p>
+<p>Lng: <%= restaurant.lng %></p>
+<p>Description: <%= restaurant.text %></p>
+<p>Phone Number: <%= restaurant.phoneNumber %></p>
+<p>Cuisine: <%= restaurant.cuisine %></p>
+<p>Score: <%= score %></p>
+<p>Url: <%= restaurant.url %></p>
+
+<div class="jumbotron">
     <h3>Add a Review</h3>
-    <!--do this with ajax!!!!-->
     <form class="" id="review-form" onsubmit="ajaxFunction(event)"action="/restaurant" method="post">
-        Description: <input type="text" id="descrip" placeholder="Enter description" name="descrip" id="descrip">
+        Description: <input type="text" id="descrip" placeholder="Enter Review" name="descrip" id="descrip">
         <br>
-        Rating: <input type="text" id="rating" placeholder="Enter rating" name="rating" id="rating">
+        Rating: <input type="number" placeholder="Rating" min="1" max="5" name="rating" id="rating" required>
         <br>
-        <input type="submit" class="" name="submit" value="Submit" id="submit">
+        <input type="submit" class="btn btn-primary" name="submit" value="Submit" id="submit">
     </form>
     <br>
     <br>
+</div>
 
-    <h2>Reviews: </h2>
+<% var counter = 0;%>
+<% var total = 0;%>
+<% var score = 0;%>
 
-    <div id="reviews-area">
+<h2>Reviews: </h2>
+
+<div id="reviews-area">
 
     <% reviews.forEach(function(review){ %>
 
-        <div>
-            UserId: <%= review.userId %> <br>
-            Rating: <%= review.rating %> <br>
-            Text: <%= review.text %> <br>
-        </div>
+    <div>
+        UserId: <%= review.userId %> <br>
+        Rating: <%= review.rating %> <br>
+        Text: <%= review.text %> <br>
     </div>
-        <br>
-
-    <% }); %>
-
-
+</div>
+<br>
+<% total += review.rating %>
+<% counter++ %>
+<% score = total/counter %>
+<% }); %>
+<div> <p><%=Math.round(score).toPrecision(2)%></p></div>
 
 </body>
 </html>
