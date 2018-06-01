@@ -1,3 +1,15 @@
+/*
+* Controller allows users to perform a search, there are multiple search bars
+* therefore enabling the user to performing different or multiple searchers.
+* From this they are then able to see which restaurants within the database are
+* relevant for the search based on distance and/or cuisine and/or keywords.
+* This information is then outputted to the user in a list and on a map with
+* markers showing the location of the restaurants.
+* @author Georgia Hardy & Andy Tyler
+* @version 1.0 (June 1, 2018)
+*/
+
+// require the models file
 const models = require('../models/model');
 const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyAS-rdEkY_sqFv2AjbRIHIsnMon6JXbg1E'
@@ -15,6 +27,7 @@ module.exports = {
         else   {
             radius = 30.0;
         }
+
         googleMapsClient.geocode({
             address: req.query.postcode
         }, function(err, response) {
@@ -31,6 +44,7 @@ module.exports = {
                     var regex = RegExp("/.*" + keyword + ".*/");
                     var degrees = (radius / 69); //convert miles to lat long.
 
+                    // handling the queries
                     var query1 = {
                         description: new RegExp('^' + keyword),
                         cuisine: cui,
@@ -85,3 +99,4 @@ module.exports = {
         res.render('index', { title: 'Restaurant Assignment' });
     }
 };
+
