@@ -1,19 +1,29 @@
+/*
+* Controller to allow users to create a restaurant, inputted relevant information
+* and to view the restaurent when a user searches
+* @author Georgia Hardy & Andy Tyler
+* @version 1.0 (June 1, 2018)
+*/
+
+// requiring the models file
 const models = require('../models/model');
+// requiring the reviews controller
+const reviews = require('../controllers/review');
+// initalising a variable to use express
 var app = require('express')();
 
-
-const reviews = require('../controllers/review');
-
-//TODO GET YOUR OWN FUCKING KEY. IF YOU HAND THIS IN I WILL LITERALLY KILL YOU
-//FIXME GET YOUR OWN FUCKING KEY. IF YOU HAND THIS IN I WILL LITERALLY KILL YOU
 const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyApmqRUl9K_tUZmUR-0Rpk0snnYx7XDaMA'
-}); //TODO GET YOUR OWN FUCKING KEY. IF YOU HAND THIS IN I WILL LITERALLY KILL YOU
-//TODO GET YOUR OWN FUCKING KEY. IF YOU HAND THIS IN I WILL LITERALLY KILL YOU
-//FIXME GET YOUR OWN FUCKING KEY. IF YOU HAND THIS IN I WILL LITERALLY KILL YOU
+});
 
 module.exports = {
 
+    /*
+    * This function allows user to create a restaurant page with all the relevant
+    * information needed. This also include a map of where the restaurant is
+    * situated. If there is a problem with finding the address, the system throws
+    * an error stating that the restaurant was not created.
+    */
     createRestaurant: function(req, res) {
         console.log(req.body);
 
@@ -61,15 +71,11 @@ module.exports = {
                 res.send("There was an error creating the restaurant");
             }
         });
-
-
-
-        // create a new restaurant
-
-        //res.send(req.body);
-
     },
 
+    /*
+    * This function allows users to view a restaurant after searching.
+    */
     showRestaurant: function(req, res) {
         console.log(req.query.token);
 
@@ -81,10 +87,6 @@ module.exports = {
                     res.render('restaurant', {restaurant: restaurant[0], reviews: reviews});
                 });
             }
-
         });
-
-
     }
-
 };

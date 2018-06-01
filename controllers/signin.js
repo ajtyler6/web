@@ -1,8 +1,20 @@
+/*
+* Controller to allow a user to sign in to their account that they have created
+* uses Passport in order to authenticate the user and the password.
+* @author Georgia Hardy & Andy Tyler
+* @version 1.0 (June 1, 2018)
+*/
+
+// require the model file
 const models = require('../models/model');
-const passport = require("passport");
-var LocalStrategy = require('passport-local').Strategy;
-var user = 0;
+// require the passport controller
 const passport_user = require('../controllers/passport');
+// require passport API
+const passport = require("passport");
+// require passport-local which is a module of passport
+var LocalStrategy = require('passport-local').Strategy;
+// declare variable for user
+var user = 0;
 
 passport.use('signin', new LocalStrategy({
     passReqToCallback : true
