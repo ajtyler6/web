@@ -1,3 +1,11 @@
+/*
+* This file is a thin interface over the top of the main configuration.
+* It allows all functionality within the system.
+* @author Georgia Hardy & Andy Tyler
+* @version 1.0 (June 1, 2018)
+*/
+
+// declaring variables for the different API's that are required for the system
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -10,8 +18,8 @@ var expressSession = require('express-session');
 var flash = require("flash");
 var user = 0;
 
+// connect mongoose
 mongoose.connect('mongodb://localhost/aandg');
-
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

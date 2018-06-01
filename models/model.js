@@ -1,4 +1,5 @@
 //mongod --config /usr/local/etc/mongod.conf
+//require mongoose
 const mongoose = require('mongoose');
 
 // Review Schema
@@ -28,10 +29,9 @@ var user = mongoose.Schema({
     password: String
 });
 
+// export the models
 module.exports = {
     Restaurant: mongoose.model('Restaurant', schema2),
     Review : mongoose.model('Review', schema1),
     User : mongoose.model('User', user)
 };
-
-

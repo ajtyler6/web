@@ -8,7 +8,6 @@
 // requires the models file
 const models = require('../models/model');
 
-
 module.exports = {
 
     writeReview: function(req, res) {
