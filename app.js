@@ -4,8 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
-var bodyParser = require('body-parser');//x
-
+var bodyParser = require("body-parser");
+var passport = require("passport");
+var expressSession = require('express-session');
+var flash = require("flash");
+var user = 0;
 
 mongoose.connect('mongodb://localhost/aandg');
 
@@ -20,7 +23,11 @@ var router = require('./routes/index');
 
 var app = express();
 
-
+// configuring passport
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

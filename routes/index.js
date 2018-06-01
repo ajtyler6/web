@@ -1,13 +1,16 @@
-var express = require('express');
+const express = require('express');
 var router = express.Router();
-
-
-//TODO new signup through form
+const passport = require("passport");
+const session = require('express-session')
+const app = express()
+var LocalStrategy = require('passport-local').Strategy;
 
 const search = require('../controllers/search');
 const restaurant = require('../controllers/restaurant');
 const review = require('../controllers/review');
 const user = require('../controllers/user');
+const signin = require('../controllers/signin');
+const passport_user = require('../controllers/passport');
 
 // Shows the home page
 router.get('/', function(req, res, next) {
@@ -20,9 +23,12 @@ router.get('/search*', function(req, res, next) {
 });
 
 // Shows the create a new restaurant page
-router.get('/new-restaurant', function(req, res, next) {
+router.get('/new-restaurant', passport.authenticate('local-signin', { failureRedirect: '/error' }),
+  function(req, res) {
+    res.redirect('/success?username='+req.user.username);
     res.render('new-restaurant', { });
 });
+
 
 // Handles creating a new restaurant
 router.post('/new-restaurant', function(req, res, next) {
@@ -48,5 +54,18 @@ router.get('/sign-up', function(req, res, next) {
 router.post('/sign-up', function(req, res, next) {
     user.signUp(req, res);
 });
+
+// Shows the sign in page
+router.get('/sign-in', function(req, res) {
+  // Display the Login page with any flash message, if any
+  res.render('signin', { message: req.flash('message') });
+});
+
+// Handles the sign in page
+router.post('/sign-in', passport.authenticate('signin', {
+  successRedirect: '/',
+  failureRedirect: '/sign-in',
+  failureFlash : true
+}));
 
 module.exports = router;

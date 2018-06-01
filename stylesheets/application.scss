@@ -1,0 +1,20 @@
+/*
+*= require bootstrap_setup
+*= require font-awesome
+*= require select2
+*= require select2-bootstrap
+*= require layout
+*= require forms
+*= require epi_utilities
+*= require warning_page
+*= require custom_flash
+*= require environment_notice
+*= require bootstrap-datepicker
+*= require_self
+*= require_tree
+*/
+
+@import "global.sass"; /* Things that are used sitewide */
+@import "new_res.sass";
+@import "view_res.sass";
+@import "head_bar.sass"; /* All sidebar css is in this file
