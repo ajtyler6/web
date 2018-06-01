@@ -24,27 +24,21 @@
 </head>
 
 <body>
+<% include header.ejs %>
+<div class="container-fluid">
 
-<div id="map" style="width:600px;height:400px"></div>
-<script>
-    initMap(<%=lat%>,  <%=lng%> );
+    <div class="card" id="map" style="width:600px;height:400px"></div>
+    <script>initMap(<%=lat%>,  <%=lng%> );</script>
 
-</script>
+    <div class="card-text">You searched the area: <%=query%> of Latitude: <%=lat%> and Longitude <%=lng%>  <br> </div>
 
-
-<div>
-
-    <% include header.ejs %>
-
-    You searched the area: <%=query%> of Latitude: <%=lat%> and Longitude <%=lng%>  <br>
-
-    <% var alpha = ["A", "B", "C"]; %>
+    <% var alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"]; %>
     <% var i =0; %>
     <% restaurants.forEach(function(restaurant){ %>
 
     <script>displayGoogleMaps('<%= restaurant.name %>', <%= restaurant.lat %>, <%= restaurant.lng %>, '<%= restaurant.text %>', '<%= restaurant.cuisine %>', '<%= restaurant.phoneNumber %>', '<%= restaurant.url %>');</script>
 
-    <div>
+    <div class="jumbatron float-right">
         <h4> <a href="/restaurant-<%= restaurant.name %>?token=<%= restaurant._id %>"> <%= alpha[i] + ": " + restaurant.name %></a></h4>
         Address: <%= restaurant.address %><br>
         Lat: <%= restaurant.lat %><br>
@@ -57,8 +51,6 @@
 
     <br>
     <% i++ %>
-
-
     <% }); %>
 
 </div>

@@ -7,32 +7,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <title> <%= title %></title>
+    <title> Best Restaurant</title>
 
 </head>
 
 <body>
-<div>
+<div class="container-fluid bg">
 
     <% include header.ejs %>
 
-    <form class="" id="search" action="/search" method="get">
-        <input type="text" placeholder="Enter postcode" name="postcode" id="postcode" required>
-        <input type="text" placeholder="Enter keyword" name="keywords" id="keywords">
-        <input type="text" placeholder="Enter cui" name="cuisine" id="cuisine">
-        <input type="number" list="miles" placeholder="Enter radius (defalt 30)" min="1" max="20" name="radius" id="radius">
-        <datalist id="miles">
-            <option value="1">
-            <option value="3">
-            <option value="5">
-            <option value="10">
-            <option value="15">
-            <option value="20">
-        </datalist>
-        <input type="submit" class="" name="submit" value="Search" id="submit">
+    <h1>Welcome to Best Restaurant</h1>
+<div class="jumbotron">
+    <form class="form-group" id="search" action="/search" method="get">
+        <input class="form-control-lg" type="text" placeholder="Enter postcode" name="postcode" id="postcode" required>
+        <input class="form-control-lg" type="text" placeholder="Enter keyword" name="keywords" id="keywords">
+        <input class="form-control-lg" type="text" placeholder="Enter cuisine" name="cuisine" id="cuisine">
+        <p>Search Radius (Miles):</p><input type="range" class="custom-range" min="1" max="20" step="1" name="radius" id="radius" onchange="rangevalue.value=value"> <output id="rangevalue"></output>
+
+        <input type="submit" class="float-right btn btn-primary" name="submit" value="Search" id="submit">
     </form>
-
-
+</div>
 </div>
 
 </div>

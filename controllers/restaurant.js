@@ -1,16 +1,11 @@
 const models = require('../models/model');
 var app = require('express')();
 
-
 const reviews = require('../controllers/review');
 
-//TODO GET YOUR OWN FUCKING KEY. IF YOU HAND THIS IN I WILL LITERALLY KILL YOU
-//FIXME GET YOUR OWN FUCKING KEY. IF YOU HAND THIS IN I WILL LITERALLY KILL YOU
 const googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyApmqRUl9K_tUZmUR-0Rpk0snnYx7XDaMA'
-}); //TODO GET YOUR OWN FUCKING KEY. IF YOU HAND THIS IN I WILL LITERALLY KILL YOU
-//TODO GET YOUR OWN FUCKING KEY. IF YOU HAND THIS IN I WILL LITERALLY KILL YOU
-//FIXME GET YOUR OWN FUCKING KEY. IF YOU HAND THIS IN I WILL LITERALLY KILL YOU
+    key: 'AIzaSyAS-rdEkY_sqFv2AjbRIHIsnMon6JXbg1E'
+});
 
 module.exports = {
 
